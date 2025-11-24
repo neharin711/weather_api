@@ -1,11 +1,11 @@
 async function searchCity() {
     const city = document.getElementById("city").value;
-    const API_KEY = "e67b9ec0906bc44e742430aa03fffcf6";  // Replace
+    const API_KEY = "e67b9ec0906bc44e742430aa03fffcf6";  
 
     document.getElementById("output").innerText = "Loading...";
 
     // Step 1: Get latitude + longitude
-    const geoURL =https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${API_KEY}`;
+    const geoURL = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${API_KEY}`;
 
     const geoRes = await fetch(geoURL);
     const geoData = await geoRes.json();
@@ -19,7 +19,7 @@ async function searchCity() {
     const lon = geoData[0].lon;
 
     // Step 2: Get weather using coordinates
-    const weatherURL =https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`;
+    const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`;
 
     const weatherRes = await fetch(weatherURL);
     const weatherData = await weatherRes.json();
@@ -32,5 +32,3 @@ async function searchCity() {
         `Wind: ${weatherData.wind.speed} m/s\n` +
         `Weather: ${weatherData.weather[0].description}`;
 }
-
-
